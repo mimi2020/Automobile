@@ -21,4 +21,13 @@ export default class UserService {
     createLogin(data){
         return http.post("/auth/login",data)
     }
+
+    sendMail(data){
+        console.log("data on mail is",data)
+        return http.post("/user/mail",data)
+    }
+    resetPassword(data){
+        console.log("data on mail is",data)
+        return http.post("/user/reserPassord",data)
+    }
 }

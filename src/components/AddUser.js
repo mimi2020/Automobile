@@ -27,8 +27,13 @@ const AddUser=()=>{
      formdata.append("password",password)
      formdata.append("items",items)
      formdata.append("photo",photo)
+
+     const data= {"name":name,"email":email}
         us.create(formdata).then((res)=>{
           console.log("ok created")
+        })
+        us.sendMail(data).then((res)=>{
+          console.log("ok send mail")
         })
         navigate(-1)
      };

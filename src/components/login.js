@@ -37,7 +37,20 @@ const Login = () => {
           console.log("accepted")
          navigate ('/dashboard')
          }
+         localStorage.setItem("token",res.data.access_token);
+         console.log("token is", res.data.access_token)
       })
+  }
+
+  const ResetPasswordFunction =(e)=>{
+e.preventDefault()
+const data1 = {
+  "email" : email,
+  
+}
+US.resetPassword(data1).then((res)=>{
+  console.log("rest password")
+})
   }
 return (
   <div
@@ -90,6 +103,9 @@ return (
             </Button>
             </Box>
           </div>
+  <br></br>
+  <br></br>
+       <p onClick={(e)=>ResetPasswordFunction(e)}>Forget Password</p>   
       </form>
   </div>
 )
