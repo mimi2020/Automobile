@@ -17,12 +17,16 @@ const Login = () => {
   const US = new UserService()
   const AddLogin = (e) => {
     e.preventDefault()
-      const data = {
-          "email" : email,
-          "password": password
-      }
-      console.log("data is",data)
-      US.createLogin(data)
+      // const data = {
+      //     "email" : email,
+      //     "password": password
+      // }
+
+      const formdata = new FormData()
+      
+      formdata.append("email",email)
+      formdata.append("password",password)
+      US.createLogin(formdata)
      
       .then((res) => {
         console.log("then", res.data)

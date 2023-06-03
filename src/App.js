@@ -50,6 +50,7 @@ import AddInspection from "./components/AddInspection";
 import Login from "./components/login";
 import DashboardCustomer from "./scenes/dashboard/dashboardCustomer";
 import DashboardVendeur from "./scenes/dashboard/dashboardVendeur";
+import TestPDF from "./components/testPDF";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -111,7 +112,7 @@ function App() {
               <Route path="/AddVendeur" element={<AddVendeur />} />
               <Route path="/AddVoiture" element={<AddVoiture />} />
               <Route path="/Login" element={<Login />} />
-
+              <Route path="/testPDF" element={<TestPDF />} />
 
             </Routes>
           {/* </main> */}

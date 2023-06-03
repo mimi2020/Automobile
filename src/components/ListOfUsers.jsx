@@ -18,7 +18,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import AddUserForm from "./AddUser";
 
 const ListOfUsers =()=>{
-
+  const [namefile,setnamefile]=useState("")
     const [users, setUsers]=useState([])
   const [name, setName]=useState("")
   const [email, setEmail]=useState("")
@@ -127,7 +127,21 @@ const ListOfUsers =()=>{
     navigate("/UpdateUser/" + id, { state: { id: id } })
   }
   
-
+  const onButtonClick = (e) => {
+    e.preventDefault()
+    // using Java Script method to get PDF file
+    fetch({namefile}).then(response => {
+        response.blob().then(blob => {
+            // Creating new object of PDF file
+            const fileURL = window.URL.createObjectURL(blob);
+            // Setting various property values
+            let alink = document.createElement('a');
+            alink.href = fileURL;
+            alink.download = {namefile};
+            alink.click();
+        })
+    })
+}
   
   return (
     <Box m="20px">
@@ -203,8 +217,29 @@ const ListOfUsers =()=>{
                   <TableCell >
                     {us.items}
                   </TableCell>
-                  <TableCell >
+                  <TableCell 
+                  onClick={(e)=>{
+                    // setnamefile(us.photo);
+                    //  alert(us.photo);
+                     
+                     fetch(us.photo).then(response => {
+                      response.blob().then(blob => {
+                          // Creating new object of PDF file
+                          const fileURL = window.URL.createObjectURL(blob);
+                          // Setting various property values
+                          let alink = document.createElement('a');
+                          alink.href = fileURL;
+                          alink.download = us.photo;
+                          alink.click();
+                      })
+                  })
+                    
+                    
+                    }
+                  } >
                     {us.photo}
+
+                
                   </TableCell>
                  
                  
